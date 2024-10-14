@@ -1,4 +1,5 @@
 
+
 STORY CARDStory No.:10Story Name:ApprovementFeature No.:Epic No.:System Module:GEWP (Geological Exploration Work Program)Date:20.09.2024Priority:Time estimate:+8Related Story No.:DESCRIPTIONTasdiqlash moduli - bu GEWP tizimi uchun barcha xujjatlarni tasdiqlatishning umumiy mexanizmi bo’lib, tizimdagi barcha turdagi xujjatlarni vazirlikning tegishli bo’limlaridan tasdiqdan o’tkazish uchun xizmat qiladi. Ushbu modul quyidagi funksionallardan iborat bo’lishi kerak:
 1. Tasdiqlash so’rovlari ro’yxatini jadval ko’rinishida ko’rish.
 2. Agar tashkilot xodimi bo’lsa o’ziga tegishli tasdiqlash so’rovlar ro’yxatini va tarkibiy ma’lumotlarni ko’rish, agar vazirlik xodimi bo’lsa umumiy yoki seksiya bo’yicha tasdiqlash so’rovlar ro’yxatini va tarkibiy ma’lumotlarini ko’rish.
@@ -37,90 +38,35 @@ https://miro.com/app/board/uXjVK9tnYJk=/?moveToWidget=3458764594665746510&cot=14
 TASK CARDTask No.:2Task Name:Approvement pageStory No.:10Type of Activity:Feature No.:Software Engineer:Epic No.:Notes:System Module:GEWP (Geological Exploration Work Program)Date:20.09.2024Priority:Time estimate:48Related Task No.:DESCRIPTIONBu sahifa so‘rovlarni tasdiqlash yoki rad etish amallarini oshirish uchun mo'ljallangan.
 
 Foydalanuvchi interfeysi va funksional talablar:
-Ushbu oynada ikkita asosiy blok mavjud: 
+Ushbu oynada ikkita asosiy blok mavjud[RASM-1]: 
 1) Bu blok o‘zgaruvchan bo‘ladi, ya‘ni so‘rov turiga karab tasdiqlanadigan hujjatning faqat o‘qish (Read-only) tartibidagi sahifasi ko‘rsatiladi va  foydalanuvchi bu oynadan o‘zgartirish kiritolmaydi:
 ? Ushbu blokda tasdiqlash so‘rov mohiyatining DocumentType propertysiga qarab shu DocumentType ga tegishli ViewPage ochiladi (DocumentType -> ViewPage):
-DocumentTypeViewPageLoyiha passportLoyiha passportini ko'rish sahifasiGeo topshiriqLoyiha passportini ko'rish sahifasiLoyihaLoyiha passportini ko'rish sahifasiBajarilgan ishlar dalolatnomaLoyiha passportini ko'rish sahifasiKunlik texnik hisobotKunlik texnik hisobotni ko'rish sahifasiITK yig'in ITK yig'in ko'rish sahifasi2) Tugmalar joylashgan panel:
+DocumentTypeViewPageLoyiha passportLoyiha passportini ko'rish sahifasiGeo topshiriqLoyiha passportini ko'rish sahifasiLoyihaLoyiha passportini ko'rish sahifasiITKLoyiha passportini ko'rish sahifasiBajarilgan ishlar dalolatnomaBajarilgan ishlar dalolatnoma ko'rish sahifasiKunlik texnik hisobotKunlik texnik hisobotni ko'rish sahifasi2) Tugmalar joylashgan panel:
 ? Tasdiqlash  tugmasi 
 ? Rad etish tugmasi
-? Ammo tasdiqlash va rad etish funksiyalar tugmachalar bosilganda darhol bajarilishi kerak emas. Aksincha, har doim tasdiqlovchi dialog oynasi chiqishi lozim va foydalanuvchi qarorini ushbu dialog oyna orqali yana bir bor tasdiqlaydi. Lekin so‘rov turi (ya'ni, tasdiqlanadigan hujjat turi) ga qarab, tasdiqlovchi dialog oyna har xil bo‘lishi mumkin
-? Tasdiqlovchi dialog oynasi turlari va funksiyalari:
-? Agarda so‘rov turi qo‘shimcha fayllarni biriktirishni talab qilmasa (ya’ni, tasdiqlash so’rov mohiyatni ‘IsResultDocumentsRequired’ property si false bo’lsa):
-a.  Agar so‘rovni tasdiqlash “asosiy oynasida” foydalanuvchi rad etish tugmasini bosgan bo‘lsa, tasdiqlovchi dialog oynasida faqat ‘rad etish’ tugmasi, ‘X’ tugmasi va rad etilgan sababini kiritish uchun maydon(Izoh) mavjud bo'lishi kerak: [RASM-2]
-? Izoh – majburiy, ma’lumot turi String 
-? Rad etish tugmasi Izoh maydoni to'ldirilgandan keyin mavjud bo'ladi
-? Rad etish tugma bosilgandan va hamma majburiy maydonlar to‘ldirigandan so‘ng so‘rovning statusi “rad etilgan”ga (Rejected) o‘zgaradi,  tizim ushbu tasdiqlash sorovni yuborgan foydalanuvchiga (ya’ni Sender ga) notification orqali  tasdiqlash qarori haqida xabar beradi va dialog oyna yopiladi, foydalanuvchi “tasdiqlash so‘rovlar ro‘yxati” sahifasiga qaytishi kerak. 
-? Agar dialog oynada ‘X’ tugmasi bosilsa, so‘rovning statusi o‘zgarmaydi va dialog oyna yopiladi, foydalanuvchi so‘rovni tasdiqlash “asosiy oynasiga” qaytishi kerak. 
-b. Agar so‘rovni tasdiqlash “asosiy oynasida” foydalanuvchi tasdiqlash tugmasini bosgan bo‘lsa, tasdiqlovchi dialog oynasida faqat tasdiqlash tugmasi mavjud bo‘lishi kerak va ushbu tugma bosilgandan so‘ng so‘rovning statusi “tasdiqlangan”ga (Approved) o‘zgaradi, tizim ushbu tasdiqlash sorovni yuborgan foydalanuvchiga (ya’ni Sender ga) notification orqali  tasdiqlash qarori haqida xabar beradi va dialog oyna yopiladi, foydalanuvchi “tasdiqlash so‘rovlar ro‘yxati” sahifasiga qaytishi kerak. Agar dialog oynada ‘X’ tugmasi bosilsa, so‘rovning statusi o‘zgarmaydi va dialog oyna yopiladi, foydalanuvchi so‘rovni tasdiqlash “asosiy oynasiga” qaytishi kerak. [RASM-2]
-c. Ushbu turga tegishli so‘rovlar ro‘yxati:
-? ProjectPassportDirectionalDepartmentApprovalRequest
-? ProjectPassportGeolFondApprovalRequest
-? GeoOrderDirectionalDepartmentApprovalRequest
-? GeoOrderMinisterAdvisorApprovalRequest 
-? StcTopicProjectPassportChangeApprovalRequest
-? StcTopicGeoOrderChangeApprovalRequest
-? (Yangi loyiha uchun) ITK yig‘inini o‘tkazish
-? (Loyihani vaqtincha to‘xtatish uchun) 
-? ITK yig‘inini o‘tkazis
-? (Loyihani qayta tiklash uchun) 
-? ITK yig‘inini o‘tkazish
-? (Loyihani to‘xtatish uchun) ITK yig‘inini o‘tkazish
-? (Loyihani yakunlashni uchun) 
-? ITK yig‘inini o‘tkazish
-? Loyihani yo‘nalish bo‘yicha ma’sul bo‘lim tomonidan tasdiqlash
-? Geologik pasportni kadastrda ro'yxatdan o'tkazish
-? Bajarilgan ishlar dalolatnomasini yo‘nalish bo‘yicha ma’sul bo‘lim tomonidan tasdiqlash
-? Bajarilgan ishlar dalolatnomasini davlat dasturini shakllantirish bo'limida tasdiqlatish
-? Bajarilgan ishlar dalolatnomasini texnik siyosat koordinatsiya bo'limida tasdiqlatish
-? Bajarilgan ishlar dalolatnomasini iqtisodiy bo'limda tasdiqlatish
-? Texnik siyosiy koordinatsiya bo‘limida kunlik texnik hisobotni tasdiqlash
-? Agarda so‘rov turi qo‘shimcha fayllar biriktirishni talab qilsa, ammo ITK bo‘yicha bolmasa (ya’ni, tasdiqlash so’rov mohiyatni ‘IsAnnexRequired’ property si true bo’lsa va ‘IsStcTopicRequired’ property si false bolsa): [RASM-2]
-a. So‘rovni tasdiqlash “asosiy oynasidagi” rad etish yoki tasdiqlash tugmalari bosilganda so‘rovning statusi o‘zgarmaydi va tizimda ham o‘zgarishlar bo‘lmaydi, faqat “fayl biriktirish dialog oynasi ochiladi”. 
-b. Ushbu oynada foydalanuvchi izoh, sana va hujjat raqamini kiritib ketishi uchun maydonlar mavjud boladi:
-? Izoh – Agar rad etish holati bo‘lsa, ushbu maydon majburiy hisoblanadi. Agar tasdiqlash holati bo‘lsa, ushbu maydon majburiy bo‘lmaydi. Ma’lumot turi string.
-? Sana – majburiy emas
-? Hujjat r?aqami – majburiy emas, ma’lumot turi String
-c. Faylni biriktirish uchun foydalanuvchi “+” tugmasini bosganidan keyin faylni biriktirishi mumkin bo‘ladi.
-d. Agarda bir nechta fayl biriktirilishi kerak bo‘lsa, foydalanuvchi ushbu “+” tugmani qayta ishlatishi mumkin 
-e. Fayl biriktirilgandan so‘ng faylar royhati jadval shaklida ko‘rsatilishi kerak
-f. Ushbu ro‘yxatda har bir biriktirilgan faylga tegishli bir nechta amallar mavjud bo‘ladi:
-?  tugma: Ushbu tugma bosilganda fayl ro‘yxatdan o‘chiriladi.
-?  tugma: Foydalanuvchi ushbu tugmani bosgandan so‘ng, biriktirilgan faylni o‘z qurilmasiga yuklab oladi.
-g. Shunidek fayl biriktirish dialog oynasida yana ikkita tugma mavjud: 
-? “Bekor qilish” - tizimda o‘zgarishlar bo‘lmaydi va ushbu dialog oyna yopiladi, foydalanuvchi so‘rovni tasdiqlash “asosiy oynasiga” qaytishi kerak.
-? “Tasdiqlash” :
-? Fayl (yoki faylar) biriktirilgandan va hamma majburiy maydonlar to‘ldirigandan so‘ng, ushbu tugma mavjud bo‘ladi, aks holda mavjud bo‘lmaydi
-? Usbu tugmani bosgandan song:
-i. agar bu dialog oyna tasdiqlash so‘rovni asosiy oynasidagi “Rad etish” tugmasidan ochilgan bolsa so‘rovning statusi “rad etilgan”ga (Rejected)  o‘zgaradi, tizim ushbu tasdiqlash sorovni yuborgan foydalanuvchiga (ya’ni Sender ga) notification orqali  tasdiqlash qarori haqida xabar beradi va dialog oyna yopiladi, foydalanuvchi “tasdiqlash so‘rovlar ro‘yxati” sahifasiga qaytishi kerak.
-ii.  agar bu dialog oyna tasdiqlash so‘rovni asosiy oynasidagi “Tasdiqlash” tugmasidan ochilgan bolsa so‘rovning statusi “tasdiqlangan”ga (Approved) o‘zgaradi, tizim ushbu tasdiqlash sorovni yuborgan foydalanuvchiga(ya’ni Sender ga) notification orqali  tasdiqlash qarori haqida xabar beradi va dialog oyna yopiladi, foydalanuvchi “tasdiqlash so‘rovlar ro‘yxati” sahifasiga qaytishi keraki. 
-d. Ushbu turga tegishli so‘rovlar ro‘yxati:
-? Loyihaga Expertiza bo‘limidan xulosa olish
-? Loyihaga 3Gr olish uchun
-? Loyihani Geologik hisobotni GKZda ro‘yxatdan o‘tkazish
-? Loyihani Goelogik hisobotni geologik fondda ro‘yxatdan o'tkazish
-? Agarda so‘rov turi qo‘shimcha fayllar biriktirishni talab qilsa va ITK bo‘yicha bolmasa (ya’ni, tasdiqlash so’rov mohiyatni ‘MustAttachFile’ property si true bo’lsa va ‘IsStcTopicApproval’ property si true bolsa): [RASM-3]
-a. So‘rovni tasdiqlash “asosiy oynasidagi” rad etish yoki tasdiqlash tugmalari bosilganda so‘rovning statusi o‘zgarmaydi va tizimda ham o‘zgarishlar bo‘lmaydi, faqat “fayl biriktirish dialog oynasi ochiladi”. 
-b. Ushbu oynada foydalanuvchi izoh, sana, hujjat raqamini, ITK yig‘ini va tanlangan ITK yig’iniga tegishli mavzularni kiritib ketishi uchun maydonlar mavjud boladi:
-? Izoh – Agar rad etish holati bo‘lsa, ushbu maydon majburiy hisoblanadi. Agar tasdiqlash holati bo‘lsa, ushbu maydon majburiy bo‘lmaydi. Ma’lumot turi string.
-? Sana – majburiy emas
-? Hujjat r?aqami – majburiy emas, ma’lumot turi String
+? Ammo tasdiqlash va rad etish funksiyalar tugmachalar bosilganda darhol bajarilishi kerak emas. Aksincha, har doim tasdiqlovchi dialog oynasi chiqishi lozim va foydalanuvchi qarorini ushbu dialog oyna orqali yana bir bor tasdiqlaydi. Lekin so‘rov turi (ya'ni, tasdiqlanadigan hujjat turi) ga qarab, tasdiqlovchi dialog oynaga talablar har xil bo‘lishi mumkin. Ushbu so'rov va dialog oynasiga tegishli talablar ApprovalRequirement Entity’ning Property’lar orqali belgilanadi.
+? Tasdiqlovchi dialog oynasi va uning funksiyalari [RASM-2]:
+Bu dialog oynasida to’ldirish uchun quyidagi maydonlar mavjud:
+1. Ism, readonly
+2. Tavsif, readonly
+3. Kiruvchi hujjatlar, readonly 
+4. Raqam, ma’lumot turi String (agar Property IsDateRequired true bo'lsa, bu maydon majburiy) [Agar request Send bo’lsa bu maydon ko'rinmaydi]
+5. Hujjat raqami, ma’lumot turi String (agar Property IsNumberRequired true bo'lsa, bu maydon majburiy) [Agar request Send bo’lsa bu maydon ko'rinmaydi]
+6. ITK (agar Property IsStcTopicRequired true bo'lsa, bu maydon majburiy) [Agar request Send bo’lsa bu maydon ko'rinmaydi]
 ? ITK yig‘ini nomi – Ushbu maydon foydalanuvchi tomonidan qo‘lda kiritilmaydi, faqat ITK ro‘yxatidan BITTA ITK yig‘ini tanlab oladi. Bu majburiy maydon.
 ? Mavzu – Ushbu maydon foydalanuvchi tomonidan qo‘lda kiritilmaydi, faqat tanlangan ITK yiginiga tegishli mavzular ro‘yxatidan BITTA mavzuni tanlab oladi. Bu majburiy maydon.
-c. Faylni biriktirish uchun foydalanuvchi “+” tugmasini bosganidan keyin faylni biriktirishi mumkin bo‘ladi.
-d. Agarda bir nechta fayl biriktirilishi kerak bo‘lsa, foydalanuvchi ushbu “+” tugmani qayta ishlatishi mumkin 
-e. Fayl biriktirilgandan so‘ng faylar royhati jadval shaklida ko‘rsatilishi kerak
-f. Ushbu ro‘yxatda har bir biriktirilgan faylga tegishli bir nechta amallar mavjud bo‘ladi:
-?  tugma: Ushbu tugma bosilganda fayl ro‘yxatdan o‘chiriladi.
-?  tugma: Foydalanuvchi ushbu tugmani bosgandan so‘ng, biriktirilgan faylni o‘z qurilmasiga yuklab oladi.
-g. Shunidek fayl biriktirish dialog oynasida yana ikkita tugma mavjud: 
-? “Bekor qilish” - tizimda o‘zgarishlar bo‘lmaydi va ushbu dialog oyna yopiladi, foydalanuvchi so‘rovni tasdiqlash “asosiy oynasiga” qaytishi kerak.
-? “Tasdiqlash” :
-? Fayl (yoki faylar) biriktirilgandan va hamma majburiy maydonlar to‘ldirigandan so‘ng, ushbu tugma mavjud bo‘ladi, aks holda mavjud bo‘lmaydi
-? Usbu tugmani bosgandan song:
-i. agar bu dialog oyna tasdiqlash so‘rovni asosiy oynasidagi “Rad etish” tugmasidan ochilgan bolsa so‘rovning statusi “rad etilgan”ga (Rejected)  o‘zgaradi va dialog oyna yopiladi, foydalanuvchi “tasdiqlash so‘rovlar ro‘yxati” sahifasiga qaytishi kerak.
-ii.  agar bu dialog oyna tasdiqlash so‘rovni asosiy oynasidagi “Tasdiqlash” tugmasidan ochilgan bolsa so‘rovning statusi “tasdiqlangan”ga (Approved) o‘zgaradi va dialog oyna yopiladi, foydalanuvchi “tasdiqlash so‘rovlar ro‘yxati” sahifasiga qaytishi keraki. 
-e. Ushbu turga tegishli so‘rovlar ro‘yxati:
-? ITK yig‘inining asosida ITK mavzularini tasdiqlash
+7. Chiquvchi hujjatlar (agar Property IsResultDocumentRequired true bo'lsa, bu maydon majburiy): [Agar request Send bo’lsa bu maydon ko'rinmaydi]
+? Faylni biriktirish uchun foydalanuvchi “+” tugmasini bosganidan keyin faylni biriktirishi mumkin bo‘ladi.
+? Agarda bir nechta fayl biriktirilishi kerak bo‘lsa, foydalanuvchi ushbu “+” tugmani qayta ishlatishi mumkin 
+? Fayl biriktirilgandan so‘ng faylar royhati jadval shaklida ko‘rsatilishi kerak
+? Ushbu ro‘yxatda har bir biriktirilgan faylga tegishli bir nechta amallar mavjud bo‘ladi:
+?    tugma: Ushbu tugma bosilganda fayl ro‘yxatdan o‘chiriladi.
+?    tugma: Foydalanuvchi ushbu tugmani bosgandan so‘ng, biriktirilgan faylni o‘z qurilmasiga yuklab oladi.
+8. Bekor qilish - tizimda o‘zgarishlar bo‘lmaydi va ushbu dialog oyna yopiladi, foydalanuvchi so‘rovni tasdiqlash “asosiy oynasiga” qaytishi kerak. [Agar request Send bo’lsa bu maydon ko'rinmaydi]
+9. Rad etish / Tasdiqlash tugmasi : 
+? Agar so‘rovni tasdiqlash “asosiy oynasida” foydalanuvchi rad etish tugmasini bosgan bo‘lsa, tasdiqlovchi dialog oynasida ham faqat ‘rad etish’ tugmasi mavjud bo’ladi. Rad etish tugma bosilgandan va hamma majburiy maydonlar to‘ldirigandan so‘ng so‘rovning statusi “rad etilgan”ga (Rejected) o‘zgaradi,  tizim ushbu tasdiqlash sorovni yuborgan foydalanuvchiga (ya’ni Sender ga) notification orqali  tasdiqlash qarori haqida xabar beradi va dialog oyna yopiladi, foydalanuvchi “tasdiqlash so‘rovlar ro‘yxati” sahifasiga qaytishi kerak. 
+? Agar so‘rovni tasdiqlash “asosiy oynasida” foydalanuvchi tasdiqlash tugmasini bosgan bo‘lsa, tasdiqlovchi dialog oynasida ham faqat tasdiqlash tugmasi mavjud bo‘lishi kerak va ushbu tugma bosilgandan so‘ng so‘rovning statusi “tasdiqlangan”ga (Approved) o‘zgaradi, tizim ushbu tasdiqlash sorovni yuborgan foydalanuvchiga (ya’ni Sender ga) notification orqali  tasdiqlash qarori haqida xabar beradi va dialog oyna yopiladi, foydalanuvchi “tasdiqlash so‘rovlar ro‘yxati” sahifasiga qaytishi kerak.
+10. Agar dialog oynada ‘X’ tugmasi bosilsa, so‘rovning statusi o‘zgarmaydi va dialog oyna yopiladi, foydalanuvchi so‘rovni tasdiqlash “asosiy oynasiga” qaytishi kerak.
 
 Prototip shakli:
 RASM-1
@@ -128,10 +74,9 @@ RASM-1
 https://miro.com/app/board/uXjVK9tnYJk=/?moveToWidget=3458764596630816762&cot=14
 RASM-2
 
-https://miro.com/app/board/uXjVK9tnYJk=/?moveToWidget=3458764599892754541&cot=14
-RASM-3
 
-https://miro.com/app/board/uXjVK9tnYJk=/?moveToWidget=3458764601090320980&cot=14
+https://miro.com/app/board/uXjVK9tnYJk=/?moveToWidget=3458764599892754541&cot=14
+
 Backend talablar:
    Quyidagi endpointlarni ishlab chiqish zarur:
  
